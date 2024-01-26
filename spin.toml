@@ -1,0 +1,20 @@
+spin_manifest_version = 2
+
+[application]
+authors = ["MikeTeddyOmondi <mike_omondi@outlook.com>"]
+description = "API w/ TS & Spin"
+name = "spin-ts-api"
+version = "0.1.0"
+
+[[trigger.http]]
+route = "/..."
+component = "spin-ts-api"
+
+[component.spin-ts-api]
+source = "target/spin-ts-api.wasm"
+exclude_files = ["**/node_modules"]
+allowed_outbound_hosts = ["libsql://localhost:8080"]
+[component.spin-ts-api.variables]
+libsql_url = "libsql://localhost:8080?tls=0"
+[component.spin-ts-api.build]
+command = "npm run build"
